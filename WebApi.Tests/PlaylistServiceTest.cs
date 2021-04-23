@@ -23,5 +23,21 @@ namespace WebApi.Tests
             Assert.NotEmpty(playlist.Songs);
 
         }
+
+        [Fact]
+        public void ShouldOrderSongsAlphaticallyWhenCreatingPlaylist(){
+            
+            // Arrange
+            string name = "Rock 80s";
+            var songs = new string [] {"Under Pressure", "Highway Tune", "Another Brick In The Wall"};
+            
+            playlistService = new PlaylistService();
+            // Act
+            var playlist = playlistService.createNewPlaylist(name, songs);
+
+            // Assert
+            Assert.Equal("Another Brick In The Wall", playlist.Songs[0]);
+
+        }
     }
 }
